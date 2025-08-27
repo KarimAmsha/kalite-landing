@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
-    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; background:#fff; color:#222; scroll-behavior:smooth; }
+    body { font-family: 'Segoe UI', sans-serif; background:#fff; color:#222; scroll-behavior:smooth; }
 
     /* Navbar */
     .navbar { background:#000; }
@@ -44,10 +44,19 @@
     .card.show { opacity:1; transform:translateY(0); }
     .card:hover { transform:translateY(-6px) scale(1.02); }
 
-    /* Gradient Buttons */
+    /* Gradient Buttons + Animation */
     .btn-whatsapp { background:linear-gradient(45deg,#25D366,#128C7E); color:white; border-radius:25px; margin:3px; }
     .btn-email    { background:linear-gradient(45deg,#1D71F2,#004AAD); color:white; border-radius:25px; margin:3px; }
     .btn-call     { background:linear-gradient(45deg,#FFD700,#DAA520); color:#000;  border-radius:25px; margin:3px; }
+
+    .btn-whatsapp:hover, .btn-email:hover, .btn-call:hover {
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow:0 0 0 0 rgba(0,0,0,0.2); }
+      50% { transform: scale(1.05); box-shadow:0 0 12px rgba(212,175,55,0.6); }
+      100% { transform: scale(1); box-shadow:0 0 0 0 rgba(0,0,0,0); }
+    }
 
     /* Catalogs */
     .catalog-card {
@@ -88,9 +97,8 @@
       .catalog-card:hover { background:#d4af37; color:#000; }
     }
 
-    /* RTL helper when Arabic selected */
+    /* RTL for Arabic */
     .rtl { direction: rtl; }
-    .rtl .section-title { border-inline-start:6px solid #d4af37; padding-inline-start:12px; }
   </style>
 </head>
 <body>
@@ -104,21 +112,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#sales"      data-i18n="nav_sales">Sales</a></li>
-          <li class="nav-item"><a class="nav-link" href="#operations" data-i18n="nav_operations">Operations</a></li>
-          <li class="nav-item"><a class="nav-link" href="#procurement" data-i18n="nav_procurement">Procurement</a></li>
-          <li class="nav-item"><a class="nav-link" href="#catalogues" data-i18n="nav_catalogues">Catalogues</a></li>
-          <li class="nav-item"><a class="nav-link" href="#info"       data-i18n="nav_info">Info</a></li>
-          <li class="nav-item dropdown ms-lg-3">
-            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown" id="langLabel">🌐 Language</a>
-            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-              <li><a class="dropdown-item lang-opt" data-lang="ar" href="#">🇸🇦 العربية</a></li>
-              <li><a class="dropdown-item lang-opt" data-lang="en" href="#">🇬🇧 English</a></li>
-              <li><a class="dropdown-item lang-opt" data-lang="tr" href="#">🇹🇷 Türkçe</a></li>
-              <li><a class="dropdown-item lang-opt" data-lang="fr" href="#">🇫🇷 Français</a></li>
-              <li><a class="dropdown-item lang-opt" data-lang="es" href="#">🇪🇸 Español</a></li>
-            </ul>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="#sales">Sales</a></li>
+          <li class="nav-item"><a class="nav-link" href="#operations">Operations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#procurement">Procurement</a></li>
+          <li class="nav-item"><a class="nav-link" href="#catalogues">Catalogues</a></li>
+          <li class="nav-item"><a class="nav-link" href="#info">Info</a></li>
         </ul>
       </div>
     </div>
@@ -133,16 +131,27 @@
   <div class="container my-5">
 
     <!-- Sales Team -->
-    <h3 id="sales" class="section-title"><i class="fa-solid fa-briefcase"></i> <span data-i18n="sales_title">Sales Team</span></h3>
+    <h3 id="sales" class="section-title"><i class="fa-solid fa-briefcase"></i> Sales Team</h3>
     <div class="row g-4">
+      <!-- Samet as Sales too -->
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Samet ESER</h5>
+          <p><i class="fa-solid fa-envelope"></i> samet.eser@kalitecikolata.com.tr</p>
+          <p><i class="fa-solid fa-phone"></i> +90 (534) 411 96 86</p>
+          <a href="https://wa.me/905344119686" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+          <a href="mailto:samet.eser@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
+          <a href="tel:+905344119686" class="btn btn-call btn-sm">Call</a>
+        </div>
+      </div>
       <div class="col-md-4">
         <div class="card p-3 text-center">
           <h5>Ismail MUSTAFA</h5>
           <p><i class="fa-solid fa-envelope"></i> ismail.mustafa@kalitecikolata.com.tr</p>
           <p><i class="fa-solid fa-phone"></i> +90 (541) 954 44 37</p>
-          <a href="https://wa.me/905419544437" class="btn btn-whatsapp btn-sm"><span data-i18n="btn_whatsapp">WhatsApp</span></a>
-          <a href="mailto:ismail.mustafa@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
-          <a href="tel:+905419544437" class="btn btn-call btn-sm"><span data-i18n="btn_call">Call</span></a>
+          <a href="https://wa.me/905419544437" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+          <a href="mailto:ismail.mustafa@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
+          <a href="tel:+905419544437" class="btn btn-call btn-sm">Call</a>
         </div>
       </div>
       <div class="col-md-4">
@@ -150,9 +159,9 @@
           <h5>Karim OTHMAN</h5>
           <p><i class="fa-solid fa-envelope"></i> karim@kalitecikolata.com.tr</p>
           <p><i class="fa-solid fa-phone"></i> +90 (552) 080 29 16</p>
-          <a href="https://wa.me/905520802916" class="btn btn-whatsapp btn-sm"><span data-i18n="btn_whatsapp">WhatsApp</span></a>
-          <a href="mailto:karim@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
-          <a href="tel:+905520802916" class="btn btn-call btn-sm"><span data-i18n="btn_call">Call</span></a>
+          <a href="https://wa.me/905520802916" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+          <a href="mailto:karim@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
+          <a href="tel:+905520802916" class="btn btn-call btn-sm">Call</a>
         </div>
       </div>
       <div class="col-md-4">
@@ -160,24 +169,24 @@
           <h5>Chamael BUYURAN</h5>
           <p><i class="fa-solid fa-envelope"></i> chamael.buyuran@kalitecikolata.com.tr</p>
           <p><i class="fa-solid fa-phone"></i> +90 (538) 231 98 54</p>
-          <a href="https://wa.me/905382319854" class="btn btn-whatsapp btn-sm"><span data-i18n="btn_whatsapp">WhatsApp</span></a>
-          <a href="mailto:chamael.buyuran@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
-          <a href="tel:+905382319854" class="btn btn-call btn-sm"><span data-i18n="btn_call">Call</span></a>
+          <a href="https://wa.me/905382319854" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+          <a href="mailto:chamael.buyuran@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
+          <a href="tel:+905382319854" class="btn btn-call btn-sm">Call</a>
         </div>
       </div>
     </div>
 
     <!-- Operations Team -->
-    <h3 id="operations" class="section-title"><i class="fa-solid fa-gear"></i> <span data-i18n="operations_title">Operations Team</span></h3>
+    <h3 id="operations" class="section-title"><i class="fa-solid fa-gear"></i> Operations Team</h3>
     <div class="row g-4">
       <div class="col-md-6">
         <div class="card p-3 text-center">
           <h5>Samet ESER</h5>
           <p><i class="fa-solid fa-envelope"></i> samet.eser@kalitecikolata.com.tr</p>
           <p><i class="fa-solid fa-phone"></i> +90 (534) 411 96 86</p>
-          <a href="https://wa.me/905344119686" class="btn btn-whatsapp btn-sm"><span data-i18n="btn_whatsapp">WhatsApp</span></a>
-          <a href="mailto:samet.eser@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
-          <a href="tel:+905344119686" class="btn btn-call btn-sm"><span data-i18n="btn_call">Call</span></a>
+          <a href="https://wa.me/905344119686" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+          <a href="mailto:samet.eser@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
+          <a href="tel:+905344119686" class="btn btn-call btn-sm">Call</a>
         </div>
       </div>
       <div class="col-md-6">
@@ -185,65 +194,71 @@
           <h5>Aykut YILMAZ</h5>
           <p><i class="fa-solid fa-envelope"></i> aykut.yilmaz@kalitecikolata.com.tr</p>
           <p><i class="fa-solid fa-phone"></i> +90 (544) 859 11 93</p>
-          <a href="https://wa.me/905448591193" class="btn btn-whatsapp btn-sm"><span data-i18n="btn_whatsapp">WhatsApp</span></a>
-          <a href="mailto:aykut.yilmaz@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
-          <a href="tel:+905448591193" class="btn btn-call btn-sm"><span data-i18n="btn_call">Call</span></a>
+          <a href="https://wa.me/905448591193" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+          <a href="mailto:aykut.yilmaz@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
+          <a href="tel:+905448591193" class="btn btn-call btn-sm">Call</a>
         </div>
       </div>
     </div>
 
     <!-- Procurement -->
-    <h3 id="procurement" class="section-title"><i class="fa-solid fa-cart-shopping"></i> <span data-i18n="procurement_title">Supply Chain & Purchasing</span></h3>
+    <h3 id="procurement" class="section-title"><i class="fa-solid fa-cart-shopping"></i> Supply Chain & Purchasing</h3>
     <div class="row g-4">
       <div class="col-md-6">
         <div class="card p-3 text-center">
           <h5>Sevil YAKIN</h5>
           <p><i class="fa-solid fa-envelope"></i> sevil.yakin@kalitecikolata.com.tr</p>
-          <a href="mailto:sevil.yakin@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
+          <a href="mailto:sevil.yakin@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card p-3 text-center">
           <h5>Buket POLAT BEKTAŞ</h5>
           <p><i class="fa-solid fa-envelope"></i> buket.polat@kalitecikolata.com.tr</p>
-          <a href="mailto:buket.polat@kalitecikolata.com.tr" class="btn btn-email btn-sm"><span data-i18n="btn_email">Email</span></a>
+          <a href="mailto:buket.polat@kalitecikolata.com.tr" class="btn btn-email btn-sm">Email</a>
         </div>
       </div>
     </div>
 
     <!-- Catalogues -->
-    <h3 id="catalogues" class="section-title"><i class="fa-solid fa-book"></i> <span data-i18n="catalogues_title">Catalogues</span></h3>
+    <h3 id="catalogues" class="section-title"><i class="fa-solid fa-book"></i> Catalogues</h3>
     <div class="row g-4 text-center">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <a href="https://nukka.com.tr/uploads/NUKKA-2024-CATALOG.pdf" target="_blank" class="catalog-card d-block">
           <i class="fa-solid fa-file-pdf"></i>
           <h5>NUKKA Catalog</h5>
         </a>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <a href="https://prosweet.com.tr/Prosweet%20Catalog%202022.pdf" target="_blank" class="catalog-card d-block">
           <i class="fa-solid fa-file-pdf"></i>
           <h5>PROSWEET Catalog</h5>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="#" target="_blank" class="catalog-card d-block">
+          <i class="fa-solid fa-file-pdf"></i>
+          <h5>JELLY FUNNY Catalog</h5>
         </a>
       </div>
     </div>
 
     <!-- QR Code -->
     <div class="qr-box">
-      <p data-i18n="qr_text">Scan to save our Catalogs</p>
+      <p>📲 Scan to save our Catalogs</p>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kalitecikolata.com.tr/" alt="QR Code">
     </div>
 
     <!-- Company Info -->
-    <h3 id="info" class="section-title"><i class="fa-solid fa-building"></i> <span data-i18n="info_title">Company Info</span></h3>
-    <p><strong data-i18n="head_office">Head Office:</strong><br>
+    <h3 id="info" class="section-title"><i class="fa-solid fa-building"></i> Company Info</h3>
+    <p><strong>Head Office:</strong><br>
     Mahmut Bey Mah. Taşocağıyolu Cd. No:3 B Blok (212 Ağaoğlu My Office)<br>
     Floor: 29 Office: 487 - 488, Bağcılar, Istanbul, Türkiye<br>
-    <span data-i18n="tel_fax_label">Tel-Fax:</span> +90 (212) 803 60 00</p>
+    Tel-Fax: +90 (212) 803 60 00</p>
 
-    <p><strong data-i18n="factory_address">Factory Address:</strong><br>
+    <p><strong>Factory Address:</strong><br>
     75. Yıl Mahallesi Organize Sanayi Bölgesi 8. Cadde No: 31, Odunpazarı, Eskişehir, Türkiye<br>
-    <span data-i18n="tel_fax_label">Tel-Fax:</span> +90 (222) 236 82 50 - 51</p>
+    Tel-Fax: +90 (222) 236 82 50 - 51</p>
 
     <p><i class="fa-solid fa-globe"></i> <a href="https://kalitecikolata.com.tr/" target="_blank">www.kalitecikolata.com.tr</a></p>
     <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/kalitecikolata" target="_blank">LinkedIn – Kalite Çikolata</a></p>
@@ -262,7 +277,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Intersection animations
+    // Animation observer
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
     }, { threshold: 0.2 });
@@ -272,78 +287,6 @@
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => backToTop.style.display = window.scrollY > 200 ? 'flex' : 'none');
     backToTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
-
-    // --- Simple i18n ---
-    const dict = {
-      en: {
-        nav_sales: "Sales", nav_operations: "Operations", nav_procurement: "Procurement", nav_catalogues: "Catalogues", nav_info: "Info",
-        sales_title: "Sales Team", operations_title: "Operations Team", procurement_title: "Supply Chain & Purchasing",
-        catalogues_title: "Catalogues", info_title: "Company Info",
-        btn_whatsapp: "WhatsApp", btn_email: "Email", btn_call: "Call",
-        qr_text: "Scan to save our Catalogs",
-        head_office: "Head Office:", factory_address: "Factory Address:", tel_fax_label: "Tel-Fax:"
-      },
-      ar: {
-        nav_sales: "المبيعات", nav_operations: "العمليات", nav_procurement: "المشتريات", nav_catalogues: "الكتالوجات", nav_info: "معلومات",
-        sales_title: "فريق المبيعات", operations_title: "فريق العمليات", procurement_title: "سلسلة التوريد والمشتريات",
-        catalogues_title: "الكتالوجات", info_title: "معلومات الشركة",
-        btn_whatsapp: "واتساب", btn_email: "بريد", btn_call: "اتصال",
-        qr_text: "امسح لحفظ الكتالوجات",
-        head_office: "المقر الرئيسي:", factory_address: "عنوان المصنع:", tel_fax_label: "هاتف-فاكس:"
-      },
-      tr: {
-        nav_sales: "Satış", nav_operations: "Operasyonlar", nav_procurement: "Satın Alma", nav_catalogues: "Kataloglar", nav_info: "Bilgi",
-        sales_title: "Satış Ekibi", operations_title: "Operasyon Ekibi", procurement_title: "Tedarik Zinciri & Satın Alma",
-        catalogues_title: "Kataloglar", info_title: "Şirket Bilgileri",
-        btn_whatsapp: "WhatsApp", btn_email: "E-posta", btn_call: "Ara",
-        qr_text: "Katalogları kaydetmek için tara",
-        head_office: "Merkez Ofis:", factory_address: "Fabrika Adresi:", tel_fax_label: "Tel-Faks:"
-      },
-      fr: {
-        nav_sales: "Ventes", nav_operations: "Opérations", nav_procurement: "Achats", nav_catalogues: "Catalogues", nav_info: "Infos",
-        sales_title: "Équipe Commerciale", operations_title: "Équipe Opérations", procurement_title: "Supply Chain & Achats",
-        catalogues_title: "Catalogues", info_title: "Infos Société",
-        btn_whatsapp: "WhatsApp", btn_email: "E-mail", btn_call: "Appeler",
-        qr_text: "Scannez pour enregistrer nos catalogues",
-        head_office: "Siège :", factory_address: "Adresse de l'usine :", tel_fax_label: "Tél-Fax :"
-      },
-      es: {
-        nav_sales: "Ventas", nav_operations: "Operaciones", nav_procurement: "Compras", nav_catalogues: "Catálogos", nav_info: "Info",
-        sales_title: "Equipo de Ventas", operations_title: "Equipo de Operaciones", procurement_title: "Cadena de Suministro y Compras",
-        catalogues_title: "Catálogos", info_title: "Información de la Empresa",
-        btn_whatsapp: "WhatsApp", btn_email: "Correo", btn_call: "Llamar",
-        qr_text: "Escanea para guardar nuestros catálogos",
-        head_office: "Oficina Central:", factory_address: "Dirección de Fábrica:", tel_fax_label: "Tel-Fax:"
-      }
-    };
-
-    function applyLang(lang) {
-      const pack = dict[lang] || dict.en;
-      document.documentElement.lang = lang;
-      // RTL toggle for Arabic
-      if (lang === 'ar') { document.body.classList.add('rtl'); }
-      else { document.body.classList.remove('rtl'); }
-      // Replace all data-i18n
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (pack[key]) el.textContent = pack[key];
-      });
-      // Save choice
-      localStorage.setItem('kalite_lang', lang);
-      // Update menu label
-      const label = {en:"Language", ar:"اللغة", tr:"Dil", fr:"Langue", es:"Idioma"}[lang] || "Language";
-      document.getElementById('langLabel').textContent = "🌐 " + label;
-    }
-
-    // Init lang from storage or browser
-    const saved = localStorage.getItem('kalite_lang');
-    const initialLang = saved || (navigator.language || 'en').slice(0,2);
-    applyLang(['en','ar','tr','fr','es'].includes(initialLang) ? initialLang : 'en');
-
-    // Bind menu clicks
-    document.querySelectorAll('.lang-opt').forEach(a => {
-      a.addEventListener('click', (e) => { e.preventDefault(); applyLang(a.dataset.lang); });
-    });
   </script>
 
 </body>
