@@ -23,9 +23,10 @@
     .card {
       border:none; border-radius:15px; 
       box-shadow:0 6px 18px rgba(0,0,0,0.08);
-      transition:0.3s;
+      opacity:0; transform:translateY(30px);
+      transition:all 0.8s ease-out;
     }
-    .card:hover { transform:translateY(-6px); }
+    .card.show { opacity:1; transform:translateY(0); }
 
     .btn-whatsapp { background:#25D366; color:white; border-radius:25px; margin:3px; }
     .btn-email { background:#007bff; color:white; border-radius:25px; margin:3px; }
@@ -34,9 +35,12 @@
     .catalog-card {
       background:#fff; border:2px solid #d4af37; border-radius:15px;
       padding:20px; text-align:center; transition:0.3s;
+      opacity:0; transform:translateY(30px);
+      transition:all 0.8s ease-out;
     }
+    .catalog-card.show { opacity:1; transform:translateY(0); }
+    .catalog-card i { font-size:2.5rem; margin-bottom:10px; color:#e63946; }
     .catalog-card:hover { background:#d4af37; color:#000; transform:scale(1.05); }
-    .catalog-card i { font-size:2.5rem; margin-bottom:10px; color:#e63946; } /* أحمر PDF */
     .catalog-card:hover i { color:#000; }
 
     footer {
@@ -183,6 +187,19 @@
     <p>Languages: <span class="langs">🇸🇦 العربية | 🇬🇧 English | 🇹🇷 Türkçe | 🇫🇷 Français | 🇪🇸 Español</span></p>
     <p>&copy; 2025 Kalite Çikolata</p>
   </footer>
+
+  <!-- Animation Script -->
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.card, .catalog-card').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
